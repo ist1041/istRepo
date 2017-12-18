@@ -1,0 +1,10 @@
+<h1>Hello</h1>
+<p>
+現在登録されている本のタイトルは次のとおりです。
+</p>
+
+<p>
+<% @titles.each do |title| %>
+[タイトル] <%= title.name %>, [発売日] <%= title.sales_date %><br />
+<% end %>
+</p>

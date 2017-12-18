@@ -1,0 +1,16 @@
+<h1>新規売上登録画面</h1>
+
+<form method="post" action="/productlist/create_sale">
+ <p>
+ 商品コード：<input type="text" name="product_id" /><br />
+ 月：<input type="text" name="month" /><br />
+ 個数：<input type="text" name="num" /><br />
+ <input type="submit" value="送信" />
+ </p>
+</form>
+
+<p>
+<%= link_to_unless_current '一覧', '/productlist/show' %> | 
+<%= link_to_unless_current '商品追加', '/productlist/new_product' %> | 
+<%= link_to_unless_current '売上追加', '/productlist/new_sale' %>
+</p>
