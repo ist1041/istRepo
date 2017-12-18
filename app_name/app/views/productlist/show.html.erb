@@ -5,10 +5,11 @@
 
 <% @products.each do |product| %>
 <li>商品コード:<%= product.product_id %> 商品名:<%= product.name %>
-<%= link_to '編集', "/productlist/edit_product/#{product.product_id} "%>
+<%= link_to '編集', "/productlist/edit_product/#{product.product_id}"%>
 </li>
   <% product.sales.each do |sale| %>
   <%= sale.month %>月の売り上げ個数<%= sale.num %>
+  <%= link_to '編集', "/productlist/edit_sale/#{sale.product_id}/#{sale.month}"%>
   <br>
   <% end %>
 <% end %>

@@ -1,0 +1,16 @@
+<h1>売上編集画面</h1>
+
+<form method="post" action="/productlist/update_sale">
+ <p>
+ 商品コード：<%= @sales.product_id %><input type="hidden" name="product_id" value="<%= @sales.product_id %>" /><br />
+ 月：<%= @sales.month %><input type="hidden" name="month"  value="<%= @sales.month %>"  /><br />
+ 個数：<input type="text" name="num"  value="<%= @sales.num %>"  /><br />
+ <input type="submit" value="送信" />
+ </p>
+</form>
+
+<p>
+<%= link_to_unless_current '一覧', '/productlist/show' %> | 
+<%= link_to_unless_current '商品追加', '/productlist/new_product' %> | 
+<%= link_to_unless_current '売上追加', '/productlist/new_sale' %>
+</p>

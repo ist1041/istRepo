@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   post 'productlist/create_sale'
   get 'productlist/edit_product/:product_id' => 'productlist#edit_product'
   post 'productlist/update_product'
+  get 'productlist/edit_sale/:product_id/:month' => 'productlist#edit_sale'
+  post 'productlist/update_sale'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

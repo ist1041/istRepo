@@ -37,5 +37,16 @@ class ProductlistController < ApplicationController
       render plain: "更新失敗#{@products.errorsi.messages}:#{params[:product_id]}"
     end
   end
+  def edit_sale
+    @sales = Sale.find_by(product_id: params[:product_id] , month: params[:month])
+  end
+  def update_sale
+    @sales = Sale.find_by(product_id: params[:product_id] , month: params[:month])
+    if @sales.update_attributes(:product_id => params[:product_id],:month => params[:month],:num => params[:num])
+      redirect_to :action => 'show'
+    else
+      render plain: "更新失敗#{@sales.errorsi.messages}:#{params[:product_id]} #{params[:product_id]}月"
+    end
+  end
 end
 
