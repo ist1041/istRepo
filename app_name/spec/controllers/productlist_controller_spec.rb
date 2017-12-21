@@ -29,15 +29,15 @@ RSpec.describe ProductlistController, type: :controller do
     before do
       post :create_product ,FactoryBot.create(:product)
     end
-    #it 'リクエストは200 OKとなること' do
-    #  expect(response.status).to eq 200
-    #end
+    it 'リクエストは200 OKとなること' do
+      expect(response.status).to eq 200
+    end
     it '@productsに新規商品を割り当てること' do
        expect(response).to change(Product, :count).by(1)
     end
-    #it ':showにリダイレクトすること' do
-    #  expect(response).to redirect_to :show
-    #end
+    it ':showにリダイレクトすること' do
+     expect(response).to redirect_to :show
+    end
   end
   describe 'Get #new_sale' do
     before do
