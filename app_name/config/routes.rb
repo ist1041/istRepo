@@ -11,4 +11,4 @@ Rails.application.routes.draw do
   post 'productlist/update_sale'
   get 'productlist/destroy_product/:product_id' => 'productlist#destroy_product'
   get 'productlist/destroy_sale/:product_id/:month' => 'productlist#destroy_sale'
- end
+end
