@@ -27,7 +27,7 @@ RSpec.describe ProductlistController, type: :controller do
   end
   describe 'Post #create_product' do
     before do
-      post :create_product ,FactoryBot.create(:product)
+      post :create_product #,FactoryBot.create(:product)
     end
     it 'リクエストは200 OKとなること' do
       expect(response.status).to eq 200

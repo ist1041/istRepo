@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'productlist/show'
-  get 'productlist/new_product'
-  post 'productlist/create_product'
-  get 'productlist/new_sale'
-  post 'productlist/create_sale'
-  get 'productlist/edit_product/:product_id' => 'productlist#edit_product'
-  post 'productlist/update_product'
-  get 'productlist/edit_sale/:product_id/:month' => 'productlist#edit_sale'
-  post 'productlist/update_sale'
-  get 'productlist/destroy_product/:product_id' => 'productlist#destroy_product'
-  get 'productlist/destroy_sale/:product_id/:month' => 'productlist#destroy_sale'
+  resources :productlist , :except => [:index,:create,:new,:edit,:update,:destroy,:show] do
+    collection do
+      get 'show'
+      get 'new_product'
+      post 'create_product'
+      get 'new_sale'
+      post 'create_sale'
+      get 'edit_product/:product_id' => 'productlist#edit_product'
+      post 'update_product'
+      get 'edit_sale/:product_id/:month' => 'productlist#edit_sale'
+      post 'update_sale'
+      get 'destroy_product/:product_id' => 'productlist#destroy_product'
+      get 'destroy_sale/:product_id/:month' => 'productlist#destroy_sale'
+    end
+  end
 end
