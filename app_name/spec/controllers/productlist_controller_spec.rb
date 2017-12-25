@@ -26,14 +26,14 @@ RSpec.describe ProductlistController, type: :controller do
     end
   end
   describe 'Post #create_product' do
-    let!(:product){ 
+    let(:product){ 
       post :create_product , params: { product_id: 1, name: 'test', price: 1000 }
     }
     it 'リクエストは302 Foundとなること' do
-      expect(response.status).to eq 302
+      expect(product.status).to eq 302
     end
     it '@productsに新規商品を割り当てること' do
-      expect{product}.to change(Product, :count).by(0)
+      expect{product}.to change(Product, :count).by(1)
     end
     it ':showにリダイレクトすること' do
       expect(product).to redirect_to action: 'show'
@@ -51,14 +51,14 @@ RSpec.describe ProductlistController, type: :controller do
     end
   end
   describe 'Post #create_sale' do
-    let!(:sale){ 
+    let(:sale){ 
       post :create_sale , params: { product_id: 1, month: 1, num: 1 }
     }
     it 'リクエストは302 Foundとなること' do
-      expect(response.status).to eq 302
+      expect(sale.status).to eq 302
     end
     it '@productsに新規売上を割り当てること' do
-      expect{sale}.to change(Sale, :count).by(0)
+      expect{sale}.to change(Sale, :count).by(1)
     end
     it ':showにリダイレクトすること' do
       expect(sale).to redirect_to action: 'show'
