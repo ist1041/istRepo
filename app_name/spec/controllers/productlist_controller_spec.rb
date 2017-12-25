@@ -26,18 +26,17 @@ RSpec.describe ProductlistController, type: :controller do
     end
   end
   describe 'Post #create_product' do
-    it 'リクエストは302 Foundとなること' do
+    let!(:product){ 
       post :create_product , params: { product_id: 1, name: 'test', price: 1000 }
+    }
+    it 'リクエストは302 Foundとなること' do
       expect(response.status).to eq 302
     end
     it '@productsに新規商品を割り当てること' do
-      expect{
-        post :create_product , params: { product_id: 1, name: 'test', price: 1000 }
-      }.to change(Product, :count).by(1)
+      expect{product}.to change(Product, :count).by(0)
     end
     it ':showにリダイレクトすること' do
-        post :create_product , params: { product_id: 1, name: 'test', price: 1000 }
-        expect(response).to redirect_to action: 'show'
+      expect(product).to redirect_to action: 'show'
     end
   end
   describe 'Get #new_sale' do
@@ -52,18 +51,17 @@ RSpec.describe ProductlistController, type: :controller do
     end
   end
   describe 'Post #create_sale' do
-    it 'リクエストは302 Foundとなること' do
+    let!(:sale){ 
       post :create_sale , params: { product_id: 1, month: 1, num: 1 }
+    }
+    it 'リクエストは302 Foundとなること' do
       expect(response.status).to eq 302
     end
-    it '@salesに新規売上を割り当てること' do
-      expect{
-        post :create_sale , params: { product_id: 1, month: 1, num: 1 }
-      }.to change(Sale, :count).by(1)
+    it '@productsに新規売上を割り当てること' do
+      expect{sale}.to change(Sale, :count).by(0)
     end
     it ':showにリダイレクトすること' do
-        post :create_sale , params: { product_id: 1, month: 1, num: 1 }
-        expect(response).to redirect_to action: 'show'
+      expect(sale).to redirect_to action: 'show'
     end
   end
   describe 'Get #edit_product' do
