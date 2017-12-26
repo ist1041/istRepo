@@ -1,6 +1,6 @@
 <h1>商品編集画面</h1>
 
-<form method="post" action="/productlist/update_product">
+<form method="post" action="/products/update">
  <p>
  商品コード：<%= @products.product_id %><input type="hidden" name="product_id" value="<%= @products.product_id %>" /><br />
  商品名：<input type="text" name="name" value="<%= @products.name %>" /><br />
@@ -9,8 +9,4 @@
  </p>
 </form>
 
-<p>
-<%= link_to_unless_current '一覧', '/productlist/show' %> | 
-<%= link_to_unless_current '商品追加', '/productlist/new_product' %> | 
-<%= link_to_unless_current '売上追加', '/productlist/new_sale' %>
-</p>
+<%= render 'shared/footer' %>

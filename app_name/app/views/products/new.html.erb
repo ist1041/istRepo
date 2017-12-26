@@ -1,0 +1,12 @@
+<h1>新規商品登録画面</h1>
+
+<form method="post" action="/products/create">
+ <p>
+ 商品コード：<input type="text" name="product_id" /><br />
+ 商品名：<input type="text" name="name" /><br />
+ 価格：<input type="text" name="price" /><br />
+ <input type="submit" value="送信" />
+ </p>
+</form>
+
+<%= render 'shared/footer' %>

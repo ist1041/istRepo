@@ -1,0 +1,25 @@
+<h1>商品リスト</h1>
+<p>
+現在登録されている商品は次のとおりです。
+</p>
+
+<% @products.each do |product| %>
+<li>商品コード:<%= product.product_id %> 商品名:<%= product.name %> 価格:<%= product.price %>
+<%= link_to '編集', "/products/edit/#{product.product_id}"%>
+<%= link_to '削除', "/products/destroy/#{product.product_id}"%>
+</li>
+  <% sum_value = 0 %>
+  <% @sales.select{ |sale| sale['product_id'] == product.product_id }.each do |sale| %>
+    <%= sale.month %>月の売り上げ個数<%= sale.num %>
+    <%= link_to '編集', "/sales/edit/#{sale.product_id}/#{sale.month}"%>
+    <%= link_to '削除', "/sales/destroy/#{sale.product_id}/#{sale.month}"%>
+    <% sum_value += sale.num %>
+    <br>
+  <% end %>
+  合計金額 <%= product.price * sum_value %> 円
+<% end %>
+
+<%= render 'shared/footer' %>
+
+
+

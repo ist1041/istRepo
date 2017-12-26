@@ -1,0 +1,12 @@
+<h1>新規売上登録画面</h1>
+
+<form method="post" action="/sales/create">
+ <p>
+ 商品コード：<input type="text" name="product_id" /><br />
+ 月：<input type="text" name="month" /><br />
+ 個数：<input type="text" name="num" /><br />
+ <input type="submit" value="送信" />
+ </p>
+</form>
+
+<%= render 'shared/footer' %>

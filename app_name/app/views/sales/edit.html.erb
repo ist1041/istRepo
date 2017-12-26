@@ -1,0 +1,12 @@
+<h1>売上編集画面</h1>
+
+<form method="post" action="/sales/update">
+ <p>
+ 商品コード：<%= @sales.product_id %><input type="hidden" name="product_id" value="<%= @sales.product_id %>" /><br />
+ 月：<%= @sales.month %><input type="hidden" name="month"  value="<%= @sales.month %>"  /><br />
+ 個数：<input type="text" name="num"  value="<%= @sales.num %>"  /><br />
+ <input type="submit" value="送信" />
+ </p>
+</form>
+
+<%= render 'shared/footer' %>
