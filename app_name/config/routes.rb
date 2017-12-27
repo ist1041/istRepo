@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  get 'productlist' => 'productlist#index'
-  resources :products , :except => [:index,:edit,:destroy,:show] do
+  resources :products , :except => [:show,:destroy,:update] do
     collection do
       post 'create'
-      get 'edit/:product_id' => 'products#edit'
       post 'update'
-      get 'destroy/:product_id' => 'products#destroy'
     end
+    member do
+      get 'destroy'
+    end
+
+    resources :sales , :except => [:index,:edit,:destroy,:show,:update,:create,:new] do
+      collection do
+        get '/edit/:month' => 'sales#edit'
+        get '/destroy/:month' => 'sales#destroy'
+        post 'update'
+      end
+    end
+
   end
-  resources :sales , :except => [:index,:edit,:destroy,:show] do
+  resources :sales , :except => [:index,:edit,:destroy,:show,:update] do
     collection do
       post 'create'
-      get 'edit/:product_id/:month' => 'sales#edit'
-      post 'update'
-      get 'destroy/:product_id/:month' => 'sales#destroy'
     end
   end
 end

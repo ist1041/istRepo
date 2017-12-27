@@ -24,7 +24,7 @@ RSpec.describe SalesController, type: :controller do
           expect{sale}.to change(Sale, :count).by(1)
         end
         it ':showにリダイレクトすること' do
-          expect(sale).to redirect_to '/productlist/'
+          expect(sale).to redirect_to '/products/'
         end
     end
     describe 'Get #edit' do
@@ -56,7 +56,7 @@ RSpec.describe SalesController, type: :controller do
         end
         it ':showにリダイレクトすること' do
             post :update , params: { product_id: 1, month: 1, num: 2 }
-            expect(response).to redirect_to '/productlist/'
+            expect(response).to redirect_to '/products/'
         end
     end
     describe "DELETE #destroy" do
@@ -74,7 +74,7 @@ RSpec.describe SalesController, type: :controller do
         end
         it ':showにリダイレクトすること' do
           delete :destroy, params: {product_id: 1, month: 1}
-          expect(response).to redirect_to '/productlist/'
+          expect(response).to redirect_to '/products/'
         end
     end
 end

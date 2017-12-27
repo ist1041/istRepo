@@ -2,7 +2,7 @@
 
 <form method="post" action="/products/update">
  <p>
- 商品コード：<%= @products.product_id %><input type="hidden" name="product_id" value="<%= @products.product_id %>" /><br />
+ 商品コード：<%= @products.id %><input type="hidden" name="id" value="<%= @products.id %>" /><br />
  商品名：<input type="text" name="name" value="<%= @products.name %>" /><br />
  価格：<input type="text" name="price" value="<%= @products.price %>" /><br />
  <input type="submit" value="送信" />
